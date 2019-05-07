@@ -40,9 +40,6 @@ variable "net01" {
 variable "net02" {
   description = "(Required)VLAN name where the VM should be deployed"
 }
-variable "net03" {
-  description = "(Required)VLAN name where the VM should be deployed"
-}
 variable "net01-ipv4submask" {
   description = "ipv4 Subnet mask"
   default = 24

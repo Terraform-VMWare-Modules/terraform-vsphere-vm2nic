@@ -13,14 +13,8 @@ data "vsphere_network" "network" {
   name          = "${var.net01}"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
-
 data "vsphere_network" "network01" {
   name          = "${var.net02}"
-  datacenter_id = "${data.vsphere_datacenter.dc.id}"
-}
-
-data "vsphere_network" "network02" {
-  name          = "${var.net03}"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
 data "vsphere_virtual_machine" "template" {
@@ -49,10 +43,7 @@ resource "vsphere_virtual_machine" "LinuxVM" {
     network_id   = "${data.vsphere_network.network01.id}"
     adapter_type = "${data.vsphere_virtual_machine.template.network_interface_types[0]}"
   }
-  network_interface {
-    network_id   = "${data.vsphere_network.network02.id}"
-    adapter_type = "${data.vsphere_virtual_machine.template.network_interface_types[0]}"
-  }
+
   disk {
     label            = "disk0"
     size             = "${data.vsphere_virtual_machine.template.disks.0.size}"
@@ -74,10 +65,6 @@ resource "vsphere_virtual_machine" "LinuxVM" {
       network_interface {
         ipv4_address = "${element(var.net02-ip, count.index)}"
         ipv4_netmask = "${var.net02-ipv4submask}"
-      }
-      network_interface {
-        ipv4_address = "${element(var.net03-ip, count.index)}"
-        ipv4_netmask = "${var.net03-ipv4submask}"
       }
       dns_server_list = "${var.vmdns}"
       ipv4_gateway    = "${var.vmgateway}"
@@ -106,10 +93,7 @@ resource "vsphere_virtual_machine" "LinuxVM-withDataDisk" {
     network_id   = "${data.vsphere_network.network01.id}"
     adapter_type = "${data.vsphere_virtual_machine.template.network_interface_types[0]}"
   }
-  network_interface {
-    network_id   = "${data.vsphere_network.network02.id}"
-    adapter_type = "${data.vsphere_virtual_machine.template.network_interface_types[0]}"
-  }
+
   disk {
     label            = "disk0"
     size             = "${data.vsphere_virtual_machine.template.disks.0.size}"
@@ -136,10 +120,6 @@ resource "vsphere_virtual_machine" "LinuxVM-withDataDisk" {
       network_interface {
         ipv4_address = "${element(var.net02-ip, count.index)}"
         ipv4_netmask = "${var.net02-ipv4submask}"
-      }
-      network_interface {
-        ipv4_address = "${element(var.net03-ip, count.index)}"
-        ipv4_netmask = "${var.net03-ipv4submask}"
       }
       dns_server_list = "${var.vmdns}"
       ipv4_gateway    = "${var.vmgateway}"
@@ -169,10 +149,7 @@ resource "vsphere_virtual_machine" "WindowsVM" {
     network_id   = "${data.vsphere_network.network01.id}"
     adapter_type = "${data.vsphere_virtual_machine.template.network_interface_types[0]}"
   }
-  network_interface {
-    network_id   = "${data.vsphere_network.network02.id}"
-    adapter_type = "${data.vsphere_virtual_machine.template.network_interface_types[0]}"
-  }
+
   disk {
     label            = "disk0"
     size             = "${data.vsphere_virtual_machine.template.disks.0.size}"
@@ -196,10 +173,7 @@ resource "vsphere_virtual_machine" "WindowsVM" {
         ipv4_address = "${element(var.net02-ip, count.index)}"
         ipv4_netmask = "${var.net02-ipv4submask}"
       }
-      network_interface {
-        ipv4_address = "${element(var.net03-ip, count.index)}"
-        ipv4_netmask = "${var.net03-ipv4submask}"
-      }
+
       dns_server_list = "${var.vmdns}"
       ipv4_gateway    = "${var.vmgateway}"
     }
@@ -228,10 +202,7 @@ resource "vsphere_virtual_machine" "WindowsVM-withDataDisk" {
     network_id   = "${data.vsphere_network.network01.id}"
     adapter_type = "${data.vsphere_virtual_machine.template.network_interface_types[0]}"
   }
-  network_interface {
-    network_id   = "${data.vsphere_network.network02.id}"
-    adapter_type = "${data.vsphere_virtual_machine.template.network_interface_types[0]}"
-  }
+
   disk {
     label            = "disk0"
     size             = "${data.vsphere_virtual_machine.template.disks.0.size}"
@@ -259,10 +230,6 @@ resource "vsphere_virtual_machine" "WindowsVM-withDataDisk" {
       network_interface {
         ipv4_address = "${element(var.net02-ip, count.index)}"
         ipv4_netmask = "${var.net02-ipv4submask}"
-      }
-      network_interface {
-        ipv4_address = "${element(var.net03-ip, count.index)}"
-        ipv4_netmask = "${var.net03-ipv4submask}"
       }
       dns_server_list = "${var.vmdns}"
       ipv4_gateway    = "${var.vmgateway}"

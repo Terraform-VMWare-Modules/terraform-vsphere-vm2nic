@@ -8,7 +8,6 @@ module "example-server-windowsvm-withdatadisk" {
   vmrp             = "esxi/Resources"
   net01            = "Name of the VLAN in vSphere for the first NIC"
   net02            = "Name of the VLAN in vSphere for the Second NIC"
-  net03            = "Name of the VLAN in vSphere for the Third NIC"
   is_windows_image = "true"
   dc               = "Datacenter"
   ds               = "Data Store Cluster name"
@@ -25,7 +24,6 @@ module "example-server-windowsvm-withdatadisk" {
   vmrp              = "esxi/Resources"
   net01             = "Name of the VLAN in vSphere for the first NIC"
   net02             = "Name of the VLAN in vSphere for the Second NIC"
-  net03             = "Name of the VLAN in vSphere for the Third NIC"
   data_disk         = "true"
   data_disk_size_gb = 20
   is_windows_image  = "true"

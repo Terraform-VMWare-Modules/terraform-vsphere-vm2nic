@@ -2,8 +2,6 @@
 
 For Virtual Machine Provisioning with (Linux/Windows) customization. T
 
-> his version is working with **Datastore** instead of **Datastore Cluster**!!
-
 ## Deploys (Single/Multiple) Virtual Machines to your vSphere environment
 
 This Terraform module deploys single or multiple virtual machines of type (Linux/Windows) with following features:
@@ -15,7 +13,7 @@ This Terraform module deploys single or multiple virtual machines of type (Linux
 * Ability to choose vSphere resource pool or fall back to Cluster/ESXi root resource pool.
 * Ability to deploy Windows images to WorkGroup.
 * Ability to output VM names and IPs per module.
-* 3 Configurable Network Interface
+* 2 Configurable Network Interface
 
 > Note: For module to work it needs number of required variables corresponding to an existing resources in vSphere. Please refer to variable section for the list of required variables.
 
@@ -35,7 +33,6 @@ module "example-server-linuxvm-withdatadisk" {
   vmrp               = "esxi/Resources"  
   net01              = "Name of the VLAN in vSphere for the first NIC"
   net02              = "Name of the VLAN in vSphere for the Second NIC"
-  net03              = "Name of the VLAN in vSphere for the Third NIC"
   data_disk          = "true"
   data_disk_size_gb  = 20
   dc                 = "Datacenter"
@@ -51,7 +48,6 @@ module "example-server-windowsvm-withdatadisk" {
   vmrp              = "esxi/Resources"  
   net01              = "Name of the VLAN in vSphere for the first NIC"
   net02              = "Name of the VLAN in vSphere for the Second NIC"
-  net03              = "Name of the VLAN in vSphere for the Third NIC"
   data_disk         = "true"
   data_disk_size_gb = 20
   is_windows_image  = "true"
@@ -83,7 +79,6 @@ module "example-server-windowsvm-withdatadisk-domain" {
   vmrp              = "esxi/Resources"  
   net01              = "Name of the VLAN in vSphere for the first NIC"
   net02              = "Name of the VLAN in vSphere for the Second NIC"
-  net03              = "Name of the VLAN in vSphere for the Third NIC"
   is_windows_image  = "true"
   data_disk         = "true"
   data_disk_size_gb = 40
